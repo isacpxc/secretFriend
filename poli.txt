@@ -1,0 +1,92 @@
+Definimos Polimorfismo como um princípio a partir do qual as classes derivadas de uma única classe base são capazes de invocar os métodos que, embora apresentem a mesma assinatura, comportam-se de maneira diferente para cada uma das classes derivadas.
+
+O Polimorfismo é um mecanismo por meio do qual selecionamos as funcionalidades utilizadas de forma dinâmica por um programa no decorrer de sua execução.
+
+Com o Polimorfismo, os mesmos atributos e objetos podem ser utilizados em objetos distintos, porém, com implementações lógicas diferentes.
+
+Por exemplo: podemos assumir que uma bola de futebol e uma camisa da seleção brasileira são artigos esportivos, mais que o cálculo deles em uma venda é calculado de formas diferentes.
+
+Outro exemplo: podemos dizer que uma classe chamada Vendedor e outra chamada Diretor podem ter como base uma classe chamada Pessoa, com um método chamado CalcularVendas. Se este método (definido na classe base) se comportar de maneira diferente para as chamadas feitas a partir de uma instância de Vendedor e para as chamadas feitas a partir de uma instância de Diretor, ele será considerado um método polimórfico, ou seja, um método de várias formas.
+
+Assim podemos ter na classe base o método CalcularVendas:
+
+public decimal CalcularVendas()
+
+  {
+
+      decimal valorUnitario = decimal.MinValue;
+
+      decimal produtosVendidos = decimal.MinValue;
+
+      return valorUnitario * produtosVendidos;
+
+  }
+Na classe Vendedor temos o mesmo método, mais com a codificação diferente:
+
+public decimal CalcularVendas()
+
+  {
+
+      decimal valorUnitario = 50;
+
+      decimal produtosVendidos = 1500;
+
+      return valorUnitario * produtosVendidos;
+
+  }
+O mesmo ocorre na classe Diretor:
+
+public decimal CalcularVendas()
+
+  {
+
+      decimal valorUnitario = 150;
+
+      decimal produtosVendidos = 3800;
+
+      decimal taxaAdicional = 100;
+
+      return taxaAdicional + (valorUnitario * produtosVendidos);
+
+  }
+
+
+  exemplo2:
+
+  public class Animal {
+    public void comer() {
+         System.out.println( "Animal Comendo..." );
+    }
+}
+
+
+public class Cao  extends Animal {
+    public void comer() {
+         System.out.println( "Cão Comendo..." );
+    }
+}
+
+
+public class Tigre extends Animal {
+    public void comer() {
+         System.out.println( "Tirgre Comendo..." );
+    }
+}
+
+
+public class Test {
+
+  public void fazerAnimalComer( Animal animal ) {
+       animal.comer();
+  }
+
+  public static void main( String[] args ) {
+       Test t = new Test();
+        t.fazerAnimalComer( new Animal() );
+        t.fazerAnimalComer( new Cao() );
+        t.fazerAnimalComer( new Trigre() );
+   }
+}
+
+
+capacidade de uma referencia de um tipo generico referenciar um objeto de um tipo mais especifico
